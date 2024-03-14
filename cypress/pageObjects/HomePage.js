@@ -30,10 +30,20 @@ export class HomePage extends BasePage {
     return cy.get("input#mat-input-0");
   }
 
-  static get productCard(){
-    return cy.get("[aria-label='Click for more information about the product']");
+  static get lemonProductCard(){
+    return cy.get("[aria-label='Click for more information about the product']").contains("Lemon Juice (500ml)");
+  }
+  static get eggfruitProductCard(){
+    return cy.get("[aria-label='Click for more information about the product']").contains("Eggfruit Juice (500ml)");
+  }
+  static get strawberryProductCard(){
+    return cy.get("[aria-label='Click for more information about the product']").contains("Strawberry Juice (500ml)");
   }
   static get matDialogContent(){
     return cy.get("#mat-dialog-0");
+  }
+
+  static get closeCard(){
+    return cy.get("div#cdk-overlay-container bluegrey-lightgreen-theme");
   }
 }
