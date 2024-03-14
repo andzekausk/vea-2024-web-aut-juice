@@ -94,18 +94,30 @@ describe("Juice-shop scenarios", () => {
     // Validate that the card (should) contains "Sour but full of vitamins."
     HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
     });
-    // Create scenario - Search 500ml and validate cards
-    // Click on search icon
-    // Search for 500ml
-    // Select a product card - Eggfruit Juice (500ml)
-    // Validate that the card (should) contains "Now with even more exotic flavour."
-    // Close the card
-    // Select a product card - Lemon Juice (500ml)
-    // Validate that the card (should) contains "Sour but full of vitamins."
-    // Close the card
-    // Select a product card - Strawberry Juice (500ml)
-    // Validate that the card (should) contains "Sweet & tasty!"
 
+  // Create scenario - Search 500ml and validate cards
+  it("Search 500ml and validate cards",() =>{
+  // Click on search icon
+  HomePage.searchQuery.click();
+  // Search for 500ml
+  HomePage.searchField.type("500ml{enter}");
+  // Select a product card - Eggfruit Juice (500ml)
+  HomePage.eggfruitProductCard.click();
+  // Validate that the card (should) contains "Now with even more exotic flavour."
+  HomePage.matDialogContent.should("contain", "Now with even more exotic flavour.");
+  // Close the card
+  HomePage.closeCard.click();
+  // Select a product card - Lemon Juice (500ml)
+  HomePage.lemonProductCard.click();
+  // Validate that the card (should) contains "Sour but full of vitamins."
+  HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
+  // Close the card
+  HomePage.closeCard.click();
+  // Select a product card - Strawberry Juice (500ml)
+  HomePage.strawberryProductCard.click();
+  // Validate that the card (should) contains "Sweet & tasty!"
+  HomePage.matDialogContent.should("contain", "Sweet & tasty!");
+  });
     // Create scenario - Read a review
     // Click on search icon
     // Search for King

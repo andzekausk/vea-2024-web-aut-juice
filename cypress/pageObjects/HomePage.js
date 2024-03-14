@@ -40,10 +40,10 @@ export class HomePage extends BasePage {
     return cy.get("[aria-label='Click for more information about the product']").contains("Strawberry Juice (500ml)");
   }
   static get matDialogContent(){
-    return cy.get("#mat-dialog-0");
+    return cy.get('[role="dialog"]');
   }
 
   static get closeCard(){
-    return cy.get("div#cdk-overlay-container bluegrey-lightgreen-theme");
+    return cy.get('button[aria-label="Close Dialog"]');
   }
 }
