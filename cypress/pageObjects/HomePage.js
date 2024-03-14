@@ -58,4 +58,16 @@ export class HomePage extends BasePage {
   static get reviews(){
     return cy.get("div.comment");
   }
+
+  static get reviewField(){
+    return cy.get('[aria-label="Text field to review a product"]');
+  }
+
+  static get raspberryProductCard(){
+    return cy.get("[aria-label='Click for more information about the product']").contains('Raspberry Juice (1000ml)');
+  }
+
+  static get submitReviewButton(){
+    return cy.get("button#submitButton");
+  }
 }
