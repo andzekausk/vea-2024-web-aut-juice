@@ -153,18 +153,28 @@ describe("Juice-shop scenarios", () => {
     // Validate review -  "Tastes like metal"
     HomePage.reviews.contains("Tastes like metal");
     });
+
+
     // Create scenario - Validate product card amount
+    // it("Validate product card amount",() => {
     // Validate that the default amount of cards is 12
+    // [class="mat-grid-tile ng-star-inserted"]
     // Change items per page (at the bottom of page) to 24
     // Validate that the amount of cards is 24
     // Change items per page (at the bottom of page) to 36
     // Validate that the amount of cards is 35
+    // });
 
     // Create scenario - Buy Girlie T-shirt
+    it("Validate product card amount",() => {
     // Click on search icon
+    HomePage.searchQuery.click();
     // Search for Girlie
+    HomePage.searchField.type("Girlie{enter}");
     // Add to basket "Girlie"
+    HomePage.addToBasket.click();
     // Click on "Your Basket" button
+    HomePage.yourBasket.click();
     // Create page object - BasketPage
     // Click on "Checkout" button
     // Create page object - SelectAddressPage
@@ -180,7 +190,7 @@ describe("Juice-shop scenarios", () => {
     // Click on "Place your order and pay"
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
-
+    });
     // Create scenario - Add address
     // Click on Account
     // Click on Orders & Payment

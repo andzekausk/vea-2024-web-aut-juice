@@ -70,4 +70,15 @@ export class HomePage extends BasePage {
   static get submitReviewButton(){
     return cy.get("button#submitButton");
   }
+
+  // static get productGrid(){
+  //   return cy.get('class#mat-grid-list');
+  // }
+  
+  static get addToBasket(){
+    return cy.get('[aria-label="Add to Basket"]');
+  }
+  static get yourBasket(){
+    return cy.get('[aria-label="Show the shopping cart"]');
+  }
 }
