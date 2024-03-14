@@ -46,4 +46,16 @@ export class HomePage extends BasePage {
   static get closeCard(){
     return cy.get('button[aria-label="Close Dialog"]');
   }
+
+  static get KingProductCard(){
+    return cy.get("[aria-label='Click for more information about the product']").contains('OWASP Juice Shop "King of the Hill" Facemask');
+  }
+
+  static get expandReviews(){
+    return cy.get('[aria-label="Expand for Reviews"]');
+  }
+
+  static get reviews(){
+    return cy.get("div.comment");
+  }
 }
