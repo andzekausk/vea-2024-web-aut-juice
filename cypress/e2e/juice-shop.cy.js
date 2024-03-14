@@ -1,5 +1,6 @@
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
+import { RegisterPage } from "../pageObjects/RegisterPage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -28,21 +29,40 @@ describe("Juice-shop scenarios", () => {
 
     it("Registration", () => {
       // Click Account button
+      HomePage.accountButton.click();
       // Login button
+      HomePage.loginButton.click();
       // Click "Not yet a customer?"
+      LoginPage.newCustomerLink.click();
       // Find - how to generate random number in JS
+      const email = `email_${Math.round((Math.random() * 100) + 100)}@ebox.com`;
+      const password = `Password_${Math.round((Math.random() * 100) + 100)}`;
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
+      RegisterPage.emailControlField.type(email);
       // Fill in password field and repeat password field with same password
+      RegisterPage.passwordControlField.type(password);
+      RegisterPage.repeatPasswordControlField.type(password);
+      
       // Click on Security Question menu
+      RegisterPage.securityQuestion.click();
       // Select  "Name of your favorite pet?"
+      RegisterPage.securityOption.click();
       // Fill in answer
+      const pet = `anteater`;
+      RegisterPage.securityAnswerControl.type(pet);
       // Click Register button
+      RegisterPage.registerButton.click();
       // Set email value to previously created email
+      LoginPage.emailField.type(email);
       // Set password value to previously used password value
+      LoginPage.passwordField.type(password);
       // Click login button
+      LoginPage.loginButton.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.profileMenuOption.should("contain", email);
     });
   });
 

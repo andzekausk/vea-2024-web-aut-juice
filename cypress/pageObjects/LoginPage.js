@@ -19,4 +19,8 @@ export class LoginPage extends BasePage {
   static get loginButton(){
     return cy.get("button#loginButton");
   }
+
+  static get newCustomerLink(){
+    return cy.get("div#newCustomerLink");
+  }
 }
