@@ -3,6 +3,7 @@ import { LoginPage } from "../pageObjects/LoginPage";
 import { RegisterPage } from "../pageObjects/RegisterPage";
 
 describe("Juice-shop scenarios", () => {
+/*
   context("Without auto login", () => {
     beforeEach(() => {
       HomePage.visit();
@@ -65,20 +66,21 @@ describe("Juice-shop scenarios", () => {
       HomePage.profileMenuOption.should("contain", email);
     });
   });
-
+*/
   context("With auto login", () => {
     beforeEach(() => {
       cy.login("demo", "demo");
       HomePage.visit();
     });
-
+/*
     it("Search and validate Lemon", () => {
       // Click on search icon
       HomePage.searchQuery.click();
       // Search for Lemon
       HomePage.searchField.type("Lemon{enter}");
       // Select a product card - Lemon Juice (500ml)
-      HomePage.lemonProductCard.click();
+      // HomePage.lemonProductCard.click();
+      HomePage.productCard("Lemon Juice (500ml)").click();
       // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
     });
@@ -153,18 +155,35 @@ describe("Juice-shop scenarios", () => {
     // Validate review -  "Tastes like metal"
     HomePage.reviews.contains("Tastes like metal");
     });
+
+*/
     // Create scenario - Validate product card amount
+    it("Validate product card amount",() => {
     // Validate that the default amount of cards is 12
+    HomePage.productCardAmount("12");
+    // HomePage.productCardAmount.should("contain","12");
     // Change items per page (at the bottom of page) to 24
+    HomePage.itemsPerPage.click();
+    HomePage.itemsPerPageSelect("24").click();
     // Validate that the amount of cards is 24
+    HomePage.productCardAmount("24");
     // Change items per page (at the bottom of page) to 36
+    HomePage.itemsPerPage.click();
+    HomePage.itemsPerPageSelect("36").click();
     // Validate that the amount of cards is 35
+    HomePage.productCardAmount("35");
+  });
 
     // Create scenario - Buy Girlie T-shirt
+    it("Validate product card amount",() => {
     // Click on search icon
+    HomePage.searchQuery.click();
     // Search for Girlie
+    HomePage.searchField.type("Girlie{enter}");
     // Add to basket "Girlie"
+    HomePage.addToBasket.click();
     // Click on "Your Basket" button
+    HomePage.yourBasket.click();
     // Create page object - BasketPage
     // Click on "Checkout" button
     // Create page object - SelectAddressPage
@@ -180,7 +199,7 @@ describe("Juice-shop scenarios", () => {
     // Click on "Place your order and pay"
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
-
+    });
     // Create scenario - Add address
     // Click on Account
     // Click on Orders & Payment

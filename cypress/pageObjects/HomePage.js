@@ -30,6 +30,9 @@ export class HomePage extends BasePage {
     return cy.get("input#mat-input-0");
   }
 
+  static productCard(txt){
+    return cy.get("[aria-label='Click for more information about the product']").contains(txt);
+  }
   static get lemonProductCard(){
     return cy.get("[aria-label='Click for more information about the product']").contains("Lemon Juice (500ml)");
   }
@@ -69,5 +72,24 @@ export class HomePage extends BasePage {
 
   static get submitReviewButton(){
     return cy.get("button#submitButton");
+  }
+
+  static productCardAmount(nmbr){
+    return cy.get("[aria-label='Click for more information about the product']").should("have.length", nmbr);
+  }
+  
+  static get itemsPerPage(){
+    return cy.get("div#mat-select-value-1");
+  }
+
+  static itemsPerPageSelect(nmbr){
+    return cy.get("div#mat-select-0-panel").contains(nmbr);
+  }
+  
+  static get addToBasket(){
+    return cy.get('[aria-label="Add to Basket"]');
+  }
+  static get yourBasket(){
+    return cy.get('[aria-label="Show the shopping cart"]');
   }
 }
