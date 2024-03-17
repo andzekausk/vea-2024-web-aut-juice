@@ -1,6 +1,12 @@
+import { BasketPage } from "../pageObjects/BasketPage";
+import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
+import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
+import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
+import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegisterPage } from "../pageObjects/RegisterPage";
+import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 
 describe("Juice-shop scenarios", () => {
 /*
@@ -186,19 +192,28 @@ describe("Juice-shop scenarios", () => {
     HomePage.yourBasket.click();
     // Create page object - BasketPage
     // Click on "Checkout" button
+    BasketPage.checkoutButton.click();
     // Create page object - SelectAddressPage
     // Select address containing "United Fakedom"
+    SelectAddressPage.selectAddress.click();
     // Click Continue button
+    SelectAddressPage.continueButton.click();
     // Create page object - DeliveryMethodPage
     // Select delivery speed Standard Delivery
+    DeliveryMethodPage.selectDelivery.click();
     // Click Continue button
+    DeliveryMethodPage.continueButton.click();
     // Create page object - PaymentOptionsPage
     // Select card that ends with "5678"
+    PaymentOptionsPage.selectCard.click();
     // Click Continue button
+    PaymentOptionsPage.continueButton.click();
     // Create page object - OrderSummaryPage
     // Click on "Place your order and pay"
+    OrderSummaryPage.placeOrderButton.click();
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
+    OrderCompletionPage.placeOrderButton.should("contain","Thank you for your purchase!");
     });
     // Create scenario - Add address
     // Click on Account
