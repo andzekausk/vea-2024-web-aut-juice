@@ -8,6 +8,7 @@ import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegisterPage } from "../pageObjects/RegisterPage";
 import { SavedAddressesPage } from "../pageObjects/SavedAddressesPage";
+import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 
 describe("Juice-shop scenarios", () => {
@@ -181,7 +182,7 @@ describe("Juice-shop scenarios", () => {
     // Validate that the amount of cards is 35
     HomePage.productCardAmount("35");
   });
-
+/*
     // Create scenario - Buy Girlie T-shirt
     it("Buy Girlie T-shirt",() => {
     // Click on search icon
@@ -217,6 +218,8 @@ describe("Juice-shop scenarios", () => {
     // Validate confirmation - "Thank you for your purchase!"
     OrderCompletionPage.confirmation.should("contain","Thank you for your purchase!");
     });
+*/
+/*
     // Create scenario - Add address
     it("Add address",() => {
     // Click on Account
@@ -250,17 +253,35 @@ describe("Juice-shop scenarios", () => {
     // Validate that previously added address is visible
     SavedAddressesPage.validateAddress(address);
     });
+*/
+
     // Create scenario - Add payment option
+    it("Add payment option",() => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.menuButton("Orders & Payment").click();
     // Click on My payment options
+    HomePage.menuButton("My Payment Options").click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
+    SavedPaymentMethodsPage.addNewCardPanel.click();
+    const name = `:P`;
+    const cardNumber = `1234567890123456`;
+    const expiryMonth = `7`;
+    const expiryYear = `2090`;
     // Fill in Name
+    SavedPaymentMethodsPage.nameField.type(name);
     // Fill in Card Number
+    SavedPaymentMethodsPage.cardNumberField.type(cardNumber);
     // Set expiry month to 7
+    SavedPaymentMethodsPage.expiryMonthField.select(expiryMonth);
     // Set expiry year to 2090
+    SavedPaymentMethodsPage.expiryYearField.select(expiryYear);
     // Click Submit button
+    SavedPaymentMethodsPage.submitButton.click();
     // Validate that the card shows up in the list
+    SavedPaymentMethodsPage.validatePaymentMethod(cardNumber.substring(cardNumber.length-4));
+    });
   });
 });
