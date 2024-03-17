@@ -33,15 +33,7 @@ export class HomePage extends BasePage {
   static productCard(txt){
     return cy.get("[aria-label='Click for more information about the product']").contains(txt);
   }
-  static get lemonProductCard(){
-    return cy.get("[aria-label='Click for more information about the product']").contains("Lemon Juice (500ml)");
-  }
-  static get eggfruitProductCard(){
-    return cy.get("[aria-label='Click for more information about the product']").contains("Eggfruit Juice (500ml)");
-  }
-  static get strawberryProductCard(){
-    return cy.get("[aria-label='Click for more information about the product']").contains("Strawberry Juice (500ml)");
-  }
+  
   static get matDialogContent(){
     return cy.get('[role="dialog"]');
   }

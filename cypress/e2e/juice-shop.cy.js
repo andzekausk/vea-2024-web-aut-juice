@@ -12,7 +12,7 @@ import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage"
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 
 describe("Juice-shop scenarios", () => {
-/*
+
   context("Without auto login", () => {
     beforeEach(() => {
       HomePage.visit();
@@ -75,20 +75,19 @@ describe("Juice-shop scenarios", () => {
       HomePage.profileMenuOption.should("contain", email);
     });
   });
-*/
+
   context("With auto login", () => {
     beforeEach(() => {
       cy.login("demo", "demo");
       HomePage.visit();
     });
-/*
+
     it("Search and validate Lemon", () => {
       // Click on search icon
       HomePage.searchQuery.click();
       // Search for Lemon
       HomePage.searchField.type("Lemon{enter}");
       // Select a product card - Lemon Juice (500ml)
-      // HomePage.lemonProductCard.click();
       HomePage.productCard("Lemon Juice (500ml)").click();
       // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
@@ -101,7 +100,7 @@ describe("Juice-shop scenarios", () => {
     // Search for 500ml
     HomePage.searchField.type("500ml{enter}");
     // Select a product card - Lemon Juice (500ml)
-    HomePage.lemonProductCard.click();
+    HomePage.productCard("Lemon Juice (500ml)").click();
     // Validate that the card (should) contains "Sour but full of vitamins."
     HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
     });
@@ -113,19 +112,19 @@ describe("Juice-shop scenarios", () => {
     // Search for 500ml
     HomePage.searchField.type("500ml{enter}");
     // Select a product card - Eggfruit Juice (500ml)
-    HomePage.eggfruitProductCard.click();
+      HomePage.productCard("Eggfruit Juice (500ml)").click();
     // Validate that the card (should) contains "Now with even more exotic flavour."
     HomePage.matDialogContent.should("contain", "Now with even more exotic flavour.");
     // Close the card
     HomePage.closeCard.click();
     // Select a product card - Lemon Juice (500ml)
-    HomePage.lemonProductCard.click();
+    HomePage.productCard("Lemon Juice (500ml)").click();    
     // Validate that the card (should) contains "Sour but full of vitamins."
     HomePage.matDialogContent.should("contain", "Sour but full of vitamins.");
     // Close the card
     HomePage.closeCard.click();
     // Select a product card - Strawberry Juice (500ml)
-    HomePage.strawberryProductCard.click();
+    HomePage.productCard("Strawberry Juice (500ml)").click();
     // Validate that the card (should) contains "Sweet & tasty!"
     HomePage.matDialogContent.should("contain", "Sweet & tasty!");
     });
@@ -156,6 +155,7 @@ describe("Juice-shop scenarios", () => {
     // Type in review - "Tastes like metal"
     HomePage.reviewField.click();
     HomePage.reviewField.type("Tastes like metal");
+    cy.wait(150);
     // Click Submit
     HomePage.submitReviewButton.click();
     // Click expand reviews button/icon (wait for reviews to appear)
@@ -165,7 +165,8 @@ describe("Juice-shop scenarios", () => {
     HomePage.reviews.contains("Tastes like metal");
     });
 
-*/
+
+
     // Create scenario - Validate product card amount
     it("Validate product card amount",() => {
     // Validate that the default amount of cards is 12
@@ -182,7 +183,7 @@ describe("Juice-shop scenarios", () => {
     // Validate that the amount of cards is 35
     HomePage.productCardAmount("35");
   });
-/*
+
     // Create scenario - Buy Girlie T-shirt
     it("Buy Girlie T-shirt",() => {
     // Click on search icon
@@ -218,8 +219,8 @@ describe("Juice-shop scenarios", () => {
     // Validate confirmation - "Thank you for your purchase!"
     OrderCompletionPage.confirmation.should("contain","Thank you for your purchase!");
     });
-*/
-/*
+
+
     // Create scenario - Add address
     it("Add address",() => {
     // Click on Account
@@ -253,7 +254,7 @@ describe("Juice-shop scenarios", () => {
     // Validate that previously added address is visible
     SavedAddressesPage.validateAddress(address);
     });
-*/
+
 
     // Create scenario - Add payment option
     it("Add payment option",() => {
@@ -283,5 +284,6 @@ describe("Juice-shop scenarios", () => {
     // Validate that the card shows up in the list
     SavedPaymentMethodsPage.validatePaymentMethod(cardNumber.substring(cardNumber.length-4));
     });
+
   });
 });
