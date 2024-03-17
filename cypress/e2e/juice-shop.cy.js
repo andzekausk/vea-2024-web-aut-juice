@@ -1,4 +1,5 @@
 import { BasketPage } from "../pageObjects/BasketPage";
+import { CreateAddressPage } from "../pageObjects/CreateAddressPage";
 import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
@@ -6,6 +7,7 @@ import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
 import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegisterPage } from "../pageObjects/RegisterPage";
+import { SavedAddressesPage } from "../pageObjects/SavedAddressesPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 
 describe("Juice-shop scenarios", () => {
@@ -181,7 +183,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Buy Girlie T-shirt
-    it("Validate product card amount",() => {
+    it("Buy Girlie T-shirt",() => {
     // Click on search icon
     HomePage.searchQuery.click();
     // Search for Girlie
@@ -213,19 +215,41 @@ describe("Juice-shop scenarios", () => {
     OrderSummaryPage.placeOrderButton.click();
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
-    OrderCompletionPage.placeOrderButton.should("contain","Thank you for your purchase!");
+    OrderCompletionPage.confirmation.should("contain","Thank you for your purchase!");
     });
     // Create scenario - Add address
+    it("Add address",() => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.menuButton("Orders & Payment").click();
     // Click on My saved addresses
+    HomePage.menuButton("My saved addresses").click();
     // Create page object - SavedAddressesPage
     // Click on Add New Address
+    SavedAddressesPage.addAdressButton.click();
     // Create page object - CreateAddressPage
     // Fill in the necessary information
-    // Click Submit button
-    // Validate that previously added address is visible
+    const country = `Latvia`;
+    const name = `:-)`;
+    const mobileNumber = `3310001`;
+    const zipCode = `LV-3602`;
+    const address = `Nanya street 32`;
+    const city = `Vecpils`;
+    const state = `Vecpils`;
 
+    CreateAddressPage.countryField.type(country);
+    CreateAddressPage.nameField.type(name);
+    CreateAddressPage.mobileNumberField.type(mobileNumber);
+    CreateAddressPage.zipCodeField.type(zipCode);
+    CreateAddressPage.addressField.type(address);
+    CreateAddressPage.cityField.type(city);
+    CreateAddressPage.stateField.type(state);
+    // Click Submit button
+    CreateAddressPage.submitButton.click();
+    // Validate that previously added address is visible
+    SavedAddressesPage.validateAddress(address);
+    });
     // Create scenario - Add payment option
     // Click on Account
     // Click on Orders & Payment

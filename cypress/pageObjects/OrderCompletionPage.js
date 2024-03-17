@@ -5,7 +5,7 @@ export class OrderCompletionPage extends BasePage {
     return "/#/order-completion/";
   }
 
-  static get placeOrderButton(){
+  static get confirmation(){
     return cy.get('h1.confirmation');
   }
 }
